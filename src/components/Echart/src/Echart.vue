@@ -4,7 +4,7 @@ import echarts from '@/plugins/echarts'
 import { debounce } from 'lodash-es'
 import 'echarts-wordcloud'
 import { propTypes } from '@/utils/propTypes'
-import { computed, PropType, ref, unref, watch, onMounted, onBeforeUnmount, onActivated } from 'vue'
+import { computed, onActivated, onBeforeUnmount, onMounted, PropType, ref, unref, watch } from 'vue'
 import { useAppStore } from '@/store/modules/app'
 import { isString } from '@/utils/is'
 import { useDesign } from '@/hooks/web/useDesign'
@@ -27,15 +27,16 @@ const props = defineProps({
 const isDark = computed(() => appStore.getIsDark)
 
 const theme = computed(() => {
-  const echartTheme: boolean | string = unref(isDark) ? true : 'auto'
-
-  return echartTheme
+  return unref(isDark) ? true : 'auto'
 })
 
 const options = computed(() => {
-  return Object.assign(props.options, {
-    darkMode: unref(theme)
-  })
+  return Object.assign(
+    {
+      darkMode: unref(theme) as string | boolean
+    },
+    props.options
+  )
 })
 
 const elRef = ref<ElRef>()

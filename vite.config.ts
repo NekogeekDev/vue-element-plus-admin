@@ -78,15 +78,8 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       PurgeIcons(),
       env.VITE_USE_MOCK === 'true'
         ? viteMockServe({
-            ignore: /^\_/,
-            mockPath: 'mock',
-            localEnabled: !isBuild,
-            prodEnabled: isBuild,
-            injectCode: `
-          import { setupProdMockServer } from '../mock/_createProductionServer'
-
-          setupProdMockServer()
-          `
+            ignore: /^_/,
+            mockPath: 'mock'
           })
         : undefined,
       ViteEjsPlugin({
@@ -111,7 +104,7 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           replacement: 'vue-i18n/dist/vue-i18n.cjs.js'
         },
         {
-          find: /\@\//,
+          find: /@\//,
           replacement: `${pathResolve('src')}/`
         }
       ]

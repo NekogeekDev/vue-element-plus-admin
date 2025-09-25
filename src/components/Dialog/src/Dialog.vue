@@ -77,7 +77,7 @@ const dialogStyle = computed(() => {
     <template #header="{ close }">
       <div class="flex justify-between items-center h-54px pl-15px pr-15px relative">
         <slot name="title">
-          {{ title }}
+          <b class="tracking-wider">{{ title }}</b>
         </slot>
         <div
           class="h-54px flex justify-between items-center absolute top-[50%] right-15px translate-y-[-50%]"
@@ -121,10 +121,10 @@ const dialogStyle = computed(() => {
 }
 
 .@{elNamespace}-dialog {
+  padding-top: 0;
   margin: 0 !important;
 
   &__header {
-    height: 54px;
     padding: 0;
     margin-right: 0 !important;
     border-bottom: 1px solid var(--el-border-color);

@@ -3,7 +3,7 @@
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "strict": true,
     "jsx": "preserve",
     "sourceMap": true,
@@ -28,10 +28,9 @@
       "@intlify/unplugin-vue-i18n/types",
       "vite/client",
       "element-plus/global",
-      "@types/qrcode",
-      "vite-plugin-svg-icons/client"
+      "@types/qrcode"
     ]
   },
-  "include": ["src", "types/**/*.d.ts", "mock/**/*.ts"]
+  "include": ["src", "types/**/*.d.ts", "mock/**/*.ts", "vite.config.ts"]
   // "exclude": ["dist", "node_modules"]
 }
